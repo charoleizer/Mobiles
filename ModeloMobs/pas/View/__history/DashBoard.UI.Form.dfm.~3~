@@ -1,0 +1,9 @@
+inherited DashBoard: TDashBoard
+  Caption = 'Mobile'
+  ClientHeight = 249
+  ClientWidth = 229
+  ExplicitWidth = 245
+  ExplicitHeight = 287
+  PixelsPerInch = 96
+  TextHeight = 13
+end

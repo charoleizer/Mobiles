@@ -37,11 +37,11 @@ uses
 
 class function TM1FormsRegister.CreateForm(FormClass: TFormClass): TForm;
 var
-  View: TView;
+  View: TViewClass;
 begin
   //Metodo implementação de criação de forms (views) customizadas por aplicação
-   View := TView(FormClass.Create( TComponent(ViewFactory.DashBoardView) ));
-   View.Parent := TDashBoard( TComponent(ViewFactory.DashBoardView) ).Panel1;
+   View := TViewClass(FormClass.Create( TComponent(ViewFactory.DashBoardView) ));
+//   View.Parent := TMainForm( TComponent(ViewFactory.DashBoardView) ).Panel1;
 end;
 
 class procedure TM1FormsRegister.Execute;
@@ -49,7 +49,7 @@ begin
   ViewRegistry.OnCreateForm := CreateForm;
   ViewRegistry.DashboardID := TM1Forms.Dashboard;
   ViewRegistry.Add(TM1Forms.DashBoard , TDashBoard, TDashBoardController, False);
-  ViewRegistry.Add(TM1Forms.Login , TViewLogin, TLoginController, False);
+  //ViewRegistry.Add(TM1Forms.Login , TViewLogin, TLoginController, False);
 end;
 
 initialization

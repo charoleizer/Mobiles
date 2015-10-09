@@ -88,23 +88,41 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="..\pas\Main.pas">
-            <Form>frmMain</Form>
+            <Form>MainForm</Form>
         </DCCReference>
-        <DCCReference Include="..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Views\FM.UI.FormularioInterno.pas"/>
-        <DCCReference Include="..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Views\FM.UI.BaseForm.pas">
+        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Views\FM.UI.BaseForm.pas">
             <Form>BaseFormView</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Models\FM.Model.Base.pas"/>
-        <DCCReference Include="..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.Base.pas"/>
-        <DCCReference Include="..\..\..\..\AppData\Local\GitHub\tds\tds\Modelo1\Core\M1.Exceptions.pas"/>
-        <DCCReference Include="..\..\..\..\AppData\Local\GitHub\tds\tds\Modelo1\Core\M1.ResourceStrings.pas"/>
-        <DCCReference Include="..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Libs\DDC.Notification.Service.pas"/>
-        <DCCReference Include="..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Libs\DDC.ValidationInfo.pas"/>
-        <DCCReference Include="..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Libs\DDC.ViewMessages.pas"/>
-        <DCCReference Include="..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Libs\DDC.Singleton.pas"/>
-        <DCCReference Include="..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Views\FM.UI.View.Factory.pas"/>
-        <DCCReference Include="..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.Base.Impl.pas"/>
+        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Views\FM.UI.FormularioInterno.pas">
+            <Form>FormFormularioInterno</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Models\FM.Model.Base.pas"/>
+        <DCCReference Include="..\pas\Core\M1.Exceptions.pas"/>
+        <DCCReference Include="..\pas\Core\M1.Forms.Factory.pas"/>
+        <DCCReference Include="..\pas\Core\M1.ResourceStrings.pas"/>
+        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Views\FM.UI.View.Factory.pas"/>
+        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.Base.Impl.pas"/>
+        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Libs\DDC.Singleton.pas"/>
+        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Libs\DDC.ValidationInfo.pas"/>
+        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.Base.pas"/>
+        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Libs\DDC.ViewMessages.pas"/>
+        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Libs\DDC.Notification.Service.pas"/>
+        <DCCReference Include="..\pas\View\Login.UI.Form.pas">
+            <Form>ViewLogin</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\pas\Controller\Login.Controller.pas"/>
+        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.Find.Impl.pas"/>
+        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.Find.pas"/>
+        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.FormularioInterno.Impl.pas"/>
+        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.FormularioInterno.pas"/>
+        <DCCReference Include="..\pas\View\DashBoard.UI.Form.pas">
+            <Form>DashBoard</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\pas\Controller\DashBoard.Controller.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

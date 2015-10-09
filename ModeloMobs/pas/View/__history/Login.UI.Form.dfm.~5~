@@ -1,8 +1,9 @@
-object MainForm: TMainForm
+object ViewLogin: TViewLogin
   Left = 0
   Top = 0
-  ClientHeight = 292
-  ClientWidth = 229
+  Caption = 'Login'
+  ClientHeight = 232
+  ClientWidth = 197
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -10,7 +11,6 @@ object MainForm: TMainForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
 end

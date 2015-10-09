@@ -1,0 +1,32 @@
+unit Login.UI.Form;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FM.UI.FormularioInterno;
+
+type
+  TViewLogin = class(TFormFormularioInterno)
+  public
+    constructor Create(AOwner: TComponent; AComponentePai: TWinControl); reintroduce;
+
+  end;
+
+var
+  ViewLogin: TViewLogin;
+
+implementation
+
+{$R *.dfm}
+
+
+{ TViewLogin }
+
+constructor TViewLogin.Create(AOwner: TComponent; AComponentePai: TWinControl);
+begin
+  inherited;
+  ShowMessage('oi');
+end;
+
+end.

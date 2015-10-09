@@ -4,12 +4,16 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,
+  SysmoSQL,
+  HConexao;
 
 type
   TMainForm = class(TForm)
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
+    SQLConnection: TPSQLConnection;
   end;
 
 var
@@ -30,10 +34,15 @@ begin
   // SQLConnection := TPSQLConnection.Create(Self);
   // THlpConexao.Conectar(SQLConnection);
 
-  Application.ShowMainForm := false;
   ViewFactory.InvokeShow(TM1Forms.DashBoard);
+
 end;
 
 
+
+procedure TMainForm.FormShow(Sender: TObject);
+begin
+  MainForm.Visible := False;
+end;
 
 end.

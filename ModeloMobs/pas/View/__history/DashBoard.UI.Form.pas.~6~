@@ -1,0 +1,32 @@
+unit DashBoard.UI.Form;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FM.UI.BaseForm, Vcl.ExtCtrls;
+
+type
+  TDashBoard = class(TBaseFormView)
+    Panel1: TPanel;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DashBoard: TDashBoard;
+
+implementation
+
+{$R *.dfm}
+
+procedure TDashBoard.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  Application.MainForm.Close;
+end;
+
+end.
