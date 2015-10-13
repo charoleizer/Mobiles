@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FM.UI.BaseForm, Vcl.ExtCtrls;
 
 type
-  TDashBoard = class(TBaseFormView)
+  TViewDashBoard = class(TBaseFormView)
     Panel1: TPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -18,7 +18,7 @@ type
   end;
 
 var
-  DashBoard: TDashBoard;
+  ViewDashBoard: TViewDashBoard;
 
 implementation
 
@@ -30,7 +30,7 @@ uses
 
 
 
-procedure TDashBoard.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TViewDashBoard.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
   Application.MainForm.Close;
@@ -38,7 +38,7 @@ end;
 
 
 
-procedure TDashBoard.FormCreate(Sender: TObject);
+procedure TViewDashBoard.FormCreate(Sender: TObject);
 begin
   inherited;
   ViewFactory.InvokeShow(TM1Forms.Login);

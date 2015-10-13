@@ -1,4 +1,4 @@
-inherited DashBoard: TDashBoard
+inherited ViewDashBoard: TViewDashBoard
   Caption = 'Mobiles'
   ClientHeight = 292
   ClientWidth = 229
@@ -15,9 +15,5 @@ inherited DashBoard: TDashBoard
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitLeft = 32
-    ExplicitTop = 144
-    ExplicitWidth = 185
-    ExplicitHeight = 41
   end
 end
