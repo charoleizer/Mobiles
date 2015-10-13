@@ -40,16 +40,16 @@ var
   View: TView;
 begin
   //Metodo implementação de criação de forms (views) customizadas por aplicação
-   View := TView(FormClass.Create( TComponent(ViewFactory.DashBoardView) ));
-   View.Parent := TDashBoard( TComponent(ViewFactory.DashBoardView) ).Panel1;
+  View := TView(ViewFactory.GetViewClass(TM1Forms.Login));
+  View.Parent := TViewDashBoard(ViewFactory.GetViewClass(TM1Forms.DashBoard)).Panel1;
 end;
 
 class procedure TM1FormsRegister.Execute;
 begin
   ViewRegistry.OnCreateForm := CreateForm;
   ViewRegistry.DashboardID := TM1Forms.Dashboard;
-  ViewRegistry.Add(TM1Forms.DashBoard , TDashBoard, TDashBoardController, False);
-  ViewRegistry.Add(TM1Forms.Login , TViewLogin, TLoginController, False);
+  ViewRegistry.Add(TM1Forms.DashBoard , TViewDashBoard, TDashBoardController, False);
+  ViewRegistry.Add(TM1Forms.Login     , TViewLogin, TLoginController    , False);
 end;
 
 initialization

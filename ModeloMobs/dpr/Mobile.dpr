@@ -22,7 +22,7 @@ uses
   FM.Controller.Find in '..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.Find.pas',
   FM.Controller.FormularioInterno.Impl in '..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.FormularioInterno.Impl.pas',
   FM.Controller.FormularioInterno in '..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.FormularioInterno.pas',
-  DashBoard.UI.Form in '..\pas\View\DashBoard.UI.Form.pas' {DashBoard},
+  DashBoard.UI.Form in '..\pas\View\DashBoard.UI.Form.pas' {ViewDashBoard},
   DashBoard.Controller in '..\pas\Controller\DashBoard.Controller.pas';
 
 {$R *.res}

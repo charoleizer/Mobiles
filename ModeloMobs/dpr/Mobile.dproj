@@ -119,7 +119,7 @@
         <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.FormularioInterno.Impl.pas"/>
         <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.FormularioInterno.pas"/>
         <DCCReference Include="..\pas\View\DashBoard.UI.Form.pas">
-            <Form>DashBoard</Form>
+            <Form>ViewDashBoard</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\pas\Controller\DashBoard.Controller.pas"/>

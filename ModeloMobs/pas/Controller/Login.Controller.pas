@@ -3,10 +3,10 @@ unit Login.Controller;
 interface
 
 uses
-  FM.Controller.FormularioInterno.Impl;
+  FM.Controller.Base.Impl;
 
 type
-  TLoginController = class(TFormularioInternoController)
+  TLoginController = class(TControllerBase)
 
   end;
 
