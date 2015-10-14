@@ -4,11 +4,14 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
 
 type
   TMainForm = class(TForm)
-    procedure FormCreate(Sender: TObject);
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
   private
   end;
 
@@ -25,13 +28,9 @@ uses
 
 
 
-procedure TMainForm.FormCreate(Sender: TObject);
+procedure TMainForm.Button1Click(Sender: TObject);
 begin
-  // SQLConnection := TPSQLConnection.Create(Self);
-  // THlpConexao.Conectar(SQLConnection);
-
-  Application.ShowMainForm := false;
-  ViewFactory.InvokeShow(TM1Forms.DashBoard);
+  ViewFactory.InvokeShow(TM1Forms.Login);
 end;
 
 

@@ -1,8 +1,8 @@
 object MainForm: TMainForm
   Left = 0
   Top = 0
-  ClientHeight = 292
-  ClientWidth = 229
+  ClientHeight = 258
+  ClientWidth = 195
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -10,7 +10,40 @@ object MainForm: TMainForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 195
+    Height = 217
+    Align = alClient
+    BevelOuter = bvNone
+    Caption = 'Panel1'
+    TabOrder = 0
+    ExplicitWidth = 229
+    ExplicitHeight = 292
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 217
+    Width = 195
+    Height = 41
+    Align = alBottom
+    BevelOuter = bvNone
+    Caption = 'Panel2'
+    TabOrder = 1
+    ExplicitLeft = 32
+    ExplicitTop = 144
+    ExplicitWidth = 185
+    object Button1: TButton
+      Left = 64
+      Top = 6
+      Width = 75
+      Height = 25
+      Caption = 'Open'
+      TabOrder = 0
+      OnClick = Button1Click
+    end
+  end
 end
