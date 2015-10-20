@@ -1,8 +1,8 @@
 object MainForm: TMainForm
   Left = 0
   Top = 0
-  ClientHeight = 258
-  ClientWidth = 195
+  ClientHeight = 262
+  ClientWidth = 204
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,27 +15,26 @@ object MainForm: TMainForm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 195
-    Height = 217
+    Width = 204
+    Height = 221
     Align = alClient
     BevelOuter = bvNone
     Caption = 'Panel1'
     TabOrder = 0
-    ExplicitWidth = 229
-    ExplicitHeight = 292
+    ExplicitWidth = 195
+    ExplicitHeight = 217
   end
   object Panel2: TPanel
     Left = 0
-    Top = 217
-    Width = 195
+    Top = 221
+    Width = 204
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     Caption = 'Panel2'
     TabOrder = 1
-    ExplicitLeft = 32
-    ExplicitTop = 144
-    ExplicitWidth = 185
+    ExplicitTop = 217
+    ExplicitWidth = 195
     object Button1: TButton
       Left = 64
       Top = 6

@@ -13,6 +13,7 @@ type
   TM1Forms = record
   const
     Login: TGUID = '{EA71AF9A-1B0C-4A3B-B640-58587D258C31}';
+    Menu: TGUID = '{9C478CB4-A5DF-4CF2-92F6-0E4E28CB33DA}';
   end;
 
   TM1FormsRegister = class
@@ -28,10 +29,7 @@ uses
   Classes, Controls,
   Login.UI.Form,
   Login.Controller,
-
-  Main
-
-    ;
+  Main;
 
 { TM1FormsRegister }
 
@@ -46,9 +44,9 @@ begin
 
   View := TView(FormClass.Create(MainForm));
 
-  { TODO -oVictor -cDesenvolver :
+  { TODO -oVictor -cVerificar :
     Necessario chumbar MainForm? não consegui adicionar o MainForm a lista ViewRegistry, pois não tem controller. Se o Mainform tiver controller, como se vincula os 2 ?
-    Talves colocando o código [ ViewFactory.InvokeShow(XXX); ] no dpr }
+    Talves colocando o código [ ViewFactory.InvokeShow(XXX); ] no dpr ? }
 
   View.Parent      := MainForm.Panel1;
   View.Align       := alClient;

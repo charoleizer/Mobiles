@@ -11,12 +11,22 @@ type
     function GetModel: TModelBase; override;
   private
     FModel: TLoginModel;
+
   public
     constructor Create; override;
     destructor Destroy; override;
+
+    function Validate: Boolean; override;
   end;
 
 implementation
+
+uses
+  System.SysUtils,
+  M1.Exceptions,
+  System.Rtti,
+  DDC.Validator,
+  DDC.Validator.Impl;
 
 { TLoginController }
 
@@ -41,6 +51,46 @@ end;
 function TLoginController.GetModel: TModelBase;
 begin
   Result := FModel;
+end;
+
+
+
+function TLoginController.Validate: Boolean;
+var
+  oValidator: IValidator<TLoginModel>;
+begin
+
+  { TODO -oVictor -cDesenvolver :
+    Dados fixos. fazer esta consulta no banco }
+
+  oValidator := TValidator<TLoginModel>.Create;
+
+  oValidator.AddExtend(FModel.UserName, 'Usuário não cadastrado.',
+    function(const AValue: TValue): Boolean
+    begin
+      Result := UpperCase(AValue.AsString) = 'VICTOR';
+    end
+    );
+
+  Result := oValidator.Make(FModel, True).Fails;
+  if (Result) then
+    raise ExceptionValidationInfo.Create(oValidator.ErrorMessages.Text);
+
+  { TODO -oVictor -cDesenvolver :
+    A validação é feita em ordem aleatória. Dessa forma foi nessario aplicar o Make, sosinho para validar o Usuario.
+    Estudar uma forma melhor de se fazer essa validação. }
+
+  oValidator.AddExtend(FModel.Password, 'Senha incorreta.',
+    function(const AValue: TValue): Boolean
+    begin
+      Result := UpperCase(AValue.AsString) = '12345';
+    end
+    );
+
+  Result := not(oValidator.Make(FModel, True).Fails);
+  if not(Result) then
+    raise ExceptionValidationInfo.Create(oValidator.ErrorMessages.Text);
+
 end;
 
 end.

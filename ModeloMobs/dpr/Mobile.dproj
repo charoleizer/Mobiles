@@ -99,16 +99,10 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Models\FM.Model.Base.pas"/>
-        <DCCReference Include="..\pas\Core\M1.Exceptions.pas"/>
         <DCCReference Include="..\pas\Core\M1.Forms.Factory.pas"/>
-        <DCCReference Include="..\pas\Core\M1.ResourceStrings.pas"/>
         <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Views\FM.UI.View.Factory.pas"/>
         <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.Base.Impl.pas"/>
-        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Libs\DDC.Singleton.pas"/>
-        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Libs\DDC.ValidationInfo.pas"/>
         <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.Base.pas"/>
-        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Libs\DDC.ViewMessages.pas"/>
-        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Libs\DDC.Notification.Service.pas"/>
         <DCCReference Include="..\pas\View\Login.UI.Form.pas">
             <Form>ViewLogin</Form>
             <FormType>dfm</FormType>
@@ -119,6 +113,8 @@
         <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.FormularioInterno.Impl.pas"/>
         <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.FormularioInterno.pas"/>
         <DCCReference Include="..\pas\Model\Login.Model.pas"/>
+        <DCCReference Include="..\pas\Core\M1.ResourceStrings.pas"/>
+        <DCCReference Include="..\pas\Core\M1.Exceptions.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
