@@ -55,7 +55,7 @@ begin
   if (GetBaseController.Validate) then
   begin
     ViewFactory.InvokeShow(TM1Forms.Menu);
-    close;
+    Destroy;
   end;
 
 end;

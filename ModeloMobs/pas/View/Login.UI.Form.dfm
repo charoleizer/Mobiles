@@ -17,8 +17,6 @@ inherited ViewLogin: TViewLogin
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 204
-    ExplicitHeight = 262
     object EdtUserName: TEditText
       Left = 34
       Top = 56

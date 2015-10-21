@@ -16,13 +16,47 @@ object ViewMenu: TViewMenu
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
-  object cxVirtualVerticalGrid1: TcxVirtualVerticalGrid
+  object Panel1: TPanel
     Left = 0
     Top = 0
     Width = 214
-    Height = 272
+    Height = 233
+    Align = alTop
+    BevelOuter = bvNone
+    Caption = 'Panel1'
+    TabOrder = 0
+    object cxVirtualVerticalGrid1: TcxVirtualVerticalGrid
+      Left = 0
+      Top = 0
+      Width = 214
+      Height = 233
+      BorderStyle = cxcbsNone
+      Align = alClient
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 15
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      Font.Quality = fqClearTypeNatural
+      Images = cxImageList1
+      OptionsView.RowHeaderWidth = 52
+      Navigator.Buttons.CustomButtons = <>
+      ParentFont = False
+      TabOrder = 0
+      OnMouseUp = cxVirtualVerticalGrid1MouseUp
+      ExplicitLeft = -29
+      ExplicitTop = -137
+      ExplicitHeight = 201
+      Version = 1
+    end
+  end
+  object cxVirtualVerticalGrid2: TcxVirtualVerticalGrid
+    Left = 0
+    Top = 233
+    Width = 214
+    Height = 39
     BorderStyle = cxcbsNone
-    Align = alClient
+    Align = alBottom
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = 15
@@ -33,10 +67,12 @@ object ViewMenu: TViewMenu
     OptionsView.RowHeaderWidth = 52
     Navigator.Buttons.CustomButtons = <>
     ParentFont = False
-    TabOrder = 0
-    OnMouseUp = cxVirtualVerticalGrid1MouseUp
-    ExplicitWidth = 204
-    ExplicitHeight = 169
+    TabOrder = 1
+    OnMouseUp = cxVirtualVerticalGrid2MouseUp
+    ExplicitLeft = 2
+    ExplicitTop = 9
+    ExplicitWidth = 212
+    ExplicitHeight = 231
     Version = 1
   end
   object cxImageList1: TcxImageList

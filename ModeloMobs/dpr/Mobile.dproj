@@ -73,7 +73,7 @@
         <DCC_MapFile>3</DCC_MapFile>
         <DCC_Namespace>Helper;Helper.VCL;Helper.UI;Helper.Cript;Helper.Msg;Helper.Db;Helper.SO;Helper.Dbx;Helper.Rel;Helper.Sist;Helper.Sinc;Helper.Thread;Helper.Rest;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_Define>MOBILE;MSWINDOWS;$(DCC_Define)</DCC_Define>
+        <DCC_Define>MOBILE;MSWINDOWS;madExcept;LeakChecking;$(DCC_Define)</DCC_Define>
         <DCC_ExeOutput>c:\sysmovs</DCC_ExeOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>

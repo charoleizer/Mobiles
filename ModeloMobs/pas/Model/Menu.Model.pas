@@ -14,6 +14,8 @@ type
     ClearRows: TGUID = '{54C4BDB7-8815-4D7F-97A9-C4CC22DE5845}';
     BuildCategories: TGUID = '{135A0B10-081A-473A-9B0D-276CD422AA8E}';
     FindCategories: TGUID = '{C490B36B-FC07-451D-92A6-BD297A4414FE}';
+    BuildSignOutButton: TGUID = '{E6427DFE-C177-4E1D-A19F-8CCE12912C73}';
+    BuildBackButton: TGUID = '{763D5FD8-A828-45D0-B66A-58825443839E}';
   end;
 
   TMenuModel = class(TModelBase)

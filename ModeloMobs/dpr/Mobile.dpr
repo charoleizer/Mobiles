@@ -1,6 +1,11 @@
 program Mobile;
 
 uses
+  madExcept,
+  madLinkDisAsm,
+  madListHardware,
+  madListProcesses,
+  madListModules,
   Vcl.Forms,
   Main in '..\pas\Main.pas' {MainForm},
   FM.UI.BaseForm in '..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Views\FM.UI.BaseForm.pas' {BaseFormView},

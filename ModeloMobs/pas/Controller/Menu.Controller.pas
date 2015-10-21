@@ -26,7 +26,7 @@ type
 implementation
 
 uses
-  cxVGrid,
+  cxVGrid,SysUtils,
   DDC.Notification.Service;
 
 { TMenuController }
@@ -99,6 +99,7 @@ begin
     TMenuModel(FModel).MyRowByCategoryList := MyRowByCategoryList;
     NotificationService.SendMessage(FModel, TMenuViewlMsgs.BuildCategories);
   end;
+  NotificationService.SendMessage(FModel, TMenuViewlMsgs.BuildSignOutButton);
 
 end;
 

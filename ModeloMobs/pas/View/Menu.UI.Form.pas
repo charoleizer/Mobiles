@@ -6,19 +6,24 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, cxStyles, cxEdit, dxSkinsCore, dxSkinsDefaultPainters,
-  Vcl.ImgList, cxInplaceContainer, cxVGrid, cxImage,
+  Vcl.ImgList, cxInplaceContainer, cxVGrid, cxImage, Vcl.StdCtrls, Vcl.ExtCtrls,
   Menu.ViewObject,
   FM.UI.BaseForm,
-  FM.Controller.Base, Vcl.StdCtrls;
+  FM.Controller.Base,
+  M1.Forms.Factory;
 
 type
   TViewMenu = class(TBaseFormView)
-    cxVirtualVerticalGrid1: TcxVirtualVerticalGrid;
     cxImageList1: TcxImageList;
+    Panel1: TPanel;
+    cxVirtualVerticalGrid1: TcxVirtualVerticalGrid;
+    cxVirtualVerticalGrid2: TcxVirtualVerticalGrid;
 
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure cxVirtualVerticalGrid1MouseUp(Sender: TObject;
+      Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    procedure cxVirtualVerticalGrid2MouseUp(Sender: TObject;
       Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 
   protected
@@ -27,6 +32,10 @@ type
   private
     procedure ClearRows(Sender: TObject);
     procedure BuildCategories(Sender: TObject);
+
+    procedure BuildSignOutButton(Sender: TObject);
+    procedure BuildBackButton(Sender: TObject);
+
     procedure SetRowsOnList(ACategory, AProgramName: String);
     procedure NewRows(ARowsList: TRowsyList; ASelectedCategory: String);
 
@@ -55,6 +64,8 @@ begin
   inherited;
   NotificationService.Subscribe(ClearRows, TMenuViewlMsgs.ClearRows);
   NotificationService.Subscribe(BuildCategories, TMenuViewlMsgs.BuildCategories);
+  NotificationService.Subscribe(BuildSignOutButton, TMenuViewlMsgs.BuildSignOutButton);
+  NotificationService.Subscribe(BuildBackButton, TMenuViewlMsgs.BuildBackButton);
 end;
 
 
@@ -63,6 +74,8 @@ procedure TViewMenu.FormDestroy(Sender: TObject);
 begin
   NotificationService.UnSubscribe(ClearRows);
   NotificationService.UnSubscribe(BuildCategories);
+  NotificationService.UnSubscribe(BuildSignOutButton);
+  NotificationService.UnSubscribe(BuildBackButton);
   inherited;
 end;
 
@@ -95,12 +108,6 @@ begin
     end;
   end;
 
-  cxVirtualVerticalGrid1.Add(TcxCategoryRow);
-  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Name := 'cxVoltar';
-  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Properties.Caption := 'Voltar';
-  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Properties.HeaderAlignmentHorz := taCenter;
-  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.ShowExpandButton := False;
-
 end;
 
 
@@ -117,6 +124,18 @@ begin
     TMenuModel(FModel).RowsList.Last.Category    := ACategory;
   end;
 
+end;
+
+
+
+procedure TViewMenu.BuildBackButton(Sender: TObject);
+begin
+  cxVirtualVerticalGrid2.ClearRows;
+  cxVirtualVerticalGrid2.Add(TcxCategoryRow);
+  TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Name := 'cxVoltar';
+  TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Properties.Caption := 'Voltar';
+  TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Properties.HeaderAlignmentHorz := taCenter;
+  TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Options.ShowExpandButton := False;
 end;
 
 
@@ -138,6 +157,18 @@ end;
 
 
 
+procedure TViewMenu.BuildSignOutButton(Sender: TObject);
+begin
+  cxVirtualVerticalGrid2.ClearRows;
+  cxVirtualVerticalGrid2.Add(TcxCategoryRow);
+  TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Name := 'cxSignOut';
+  TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Properties.Caption := 'SignOut';
+  TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Properties.HeaderAlignmentHorz := taCenter;
+  TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Options.ShowExpandButton := False;
+end;
+
+
+
 procedure TViewMenu.ClearRows(Sender: TObject);
 begin
   cxVirtualVerticalGrid1.ClearRows;
@@ -150,13 +181,31 @@ begin
   inherited;
   if (Assigned(TcxVerticalGrid(Sender).FocusedRow)) and (TcxVerticalGrid(Sender).FocusedRow.ClassType = TcxCategoryRow) then
   begin
+
+    SetRowsOnList(TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption, 'Mob' + TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption);
+    NewRows(TMenuModel(FModel).RowsList, TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption);
+    BuildBackButton(Self);
+
+  end;
+end;
+
+
+
+procedure TViewMenu.cxVirtualVerticalGrid2MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+  inherited;
+  if (Assigned(TcxVerticalGrid(Sender).FocusedRow)) and (TcxVerticalGrid(Sender).FocusedRow.ClassType = TcxCategoryRow) then
+  begin
+
     if (TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Name = 'cxVoltar') then
       NotificationService.SendMessage(FModel, TMenuViewlMsgs.FindCategories)
-    else
+
+    else if (TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Name = 'cxSignOut') then
     begin
-      SetRowsOnList(TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption, 'Mob' + TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption);
-      NewRows(TMenuModel(FModel).RowsList, TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption);
+      ViewFactory.InvokeShow(TM1Forms.Login);
+      Destroy;
     end;
+
   end;
 end;
 
