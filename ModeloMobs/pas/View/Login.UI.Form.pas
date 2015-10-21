@@ -5,12 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, editnum,
-
   FM.UI.BaseForm,
-  FM.UI.FormularioInterno,
-  FM.Controller.Base
-
-    ;
+  FM.Controller.Base;
 
 type
   // Classe base de formulario interno não vai funcionar
@@ -48,8 +44,6 @@ uses
 
 
 procedure TViewLogin.BtnOkClick(Sender: TObject);
-var
-  bteste: Boolean;
 begin
   inherited;
 
@@ -59,7 +53,10 @@ begin
   { TODO -oVictor -cDesenvolver :
     Da forma que está implementado, o Validate vai disparar uma exceção, sendo assim, talvez não seja necessario esse if. }
   if (GetBaseController.Validate) then
+  begin
     ViewFactory.InvokeShow(TM1Forms.Menu);
+    close;
+  end;
 
 end;
 

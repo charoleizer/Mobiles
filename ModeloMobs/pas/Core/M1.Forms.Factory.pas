@@ -29,6 +29,8 @@ uses
   Classes, Controls,
   Login.UI.Form,
   Login.Controller,
+  Menu.UI.Form,
+  Menu.Controller,
   Main;
 
 { TM1FormsRegister }
@@ -64,6 +66,7 @@ begin
 
   ViewRegistry.OnCreateForm := CreateForm;
   ViewRegistry.Add(TM1Forms.Login, TViewLogin, TLoginController, False);
+  ViewRegistry.Add(TM1Forms.Menu, TViewMenu, TMenuController, False);
 
 end;
 

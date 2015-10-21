@@ -70,6 +70,7 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_MapFile>3</DCC_MapFile>
         <DCC_Namespace>Helper;Helper.VCL;Helper.UI;Helper.Cript;Helper.Msg;Helper.Db;Helper.SO;Helper.Dbx;Helper.Rel;Helper.Sist;Helper.Sinc;Helper.Thread;Helper.Rest;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_Define>MOBILE;MSWINDOWS;$(DCC_Define)</DCC_Define>
@@ -115,6 +116,13 @@
         <DCCReference Include="..\pas\Model\Login.Model.pas"/>
         <DCCReference Include="..\pas\Core\M1.ResourceStrings.pas"/>
         <DCCReference Include="..\pas\Core\M1.Exceptions.pas"/>
+        <DCCReference Include="..\pas\View\Menu.UI.Form.pas">
+            <Form>ViewMenu</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\pas\VO\Menu.ViewObject.pas"/>
+        <DCCReference Include="..\pas\Controller\Menu.Controller.pas"/>
+        <DCCReference Include="..\pas\Model\Menu.Model.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

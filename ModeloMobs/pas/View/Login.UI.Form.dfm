@@ -1,7 +1,8 @@
 inherited ViewLogin: TViewLogin
+  BorderStyle = bsSingle
   Caption = 'Login'
-  ClientHeight = 262
-  ClientWidth = 204
+  ClientHeight = 272
+  ClientWidth = 214
   OnCreate = nil
   OnDestroy = nil
   ExplicitWidth = 220
@@ -11,16 +12,16 @@ inherited ViewLogin: TViewLogin
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 204
-    Height = 262
+    Width = 214
+    Height = 272
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 206
-    ExplicitHeight = 253
+    ExplicitWidth = 204
+    ExplicitHeight = 262
     object EdtUserName: TEditText
-      Left = 29
-      Top = 62
+      Left = 34
+      Top = 56
       Width = 145
       Height = 21
       CharCase = ecUpperCase
@@ -32,8 +33,8 @@ inherited ViewLogin: TViewLogin
       LabelPosition = lpAbove
     end
     object EdtPassword: TEditText
-      Left = 29
-      Top = 118
+      Left = 34
+      Top = 112
       Width = 145
       Height = 21
       CharCase = ecUpperCase
@@ -46,8 +47,8 @@ inherited ViewLogin: TViewLogin
       LabelPosition = lpAbove
     end
     object BtnOk: TButton
-      Left = 19
-      Top = 181
+      Left = 24
+      Top = 203
       Width = 75
       Height = 25
       Caption = 'OK'
@@ -55,8 +56,8 @@ inherited ViewLogin: TViewLogin
       OnClick = BtnOkClick
     end
     object BtnCancel: TButton
-      Left = 108
-      Top = 181
+      Left = 113
+      Top = 203
       Width = 75
       Height = 25
       Caption = 'Cancel'

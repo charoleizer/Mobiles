@@ -18,7 +18,11 @@ uses
   FM.Controller.FormularioInterno in '..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.FormularioInterno.pas',
   Login.Model in '..\pas\Model\Login.Model.pas',
   M1.ResourceStrings in '..\pas\Core\M1.ResourceStrings.pas',
-  M1.Exceptions in '..\pas\Core\M1.Exceptions.pas';
+  M1.Exceptions in '..\pas\Core\M1.Exceptions.pas',
+  Menu.UI.Form in '..\pas\View\Menu.UI.Form.pas' {ViewMenu},
+  Menu.ViewObject in '..\pas\VO\Menu.ViewObject.pas',
+  Menu.Controller in '..\pas\Controller\Menu.Controller.pas',
+  Menu.Model in '..\pas\Model\Menu.Model.pas';
 
 {$R *.res}
 

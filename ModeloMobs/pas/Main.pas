@@ -9,10 +9,9 @@ uses
 type
   TMainForm = class(TForm)
     Panel1: TPanel;
-    Panel2: TPanel;
-    Button1: TButton;
-    procedure Button1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
+    procedure ChangeMainCaption(Sender: TObject);
   end;
 
 var
@@ -28,11 +27,16 @@ uses
 
 
 
-procedure TMainForm.Button1Click(Sender: TObject);
+procedure TMainForm.ChangeMainCaption(Sender: TObject);
 begin
-  ViewFactory.InvokeShow(TM1Forms.Login);
+  MainForm.Caption := 'Teste';
 end;
 
 
+
+procedure TMainForm.FormShow(Sender: TObject);
+begin
+  ViewFactory.InvokeShow(TM1Forms.Login);
+end;
 
 end.
