@@ -12,6 +12,9 @@ uses
   FM.Controller.Base,
   M1.Forms.Factory;
 
+const
+  WM_DESTROYFORM = WM_USER + 1;
+
 type
   TViewMenu = class(TBaseFormView)
     cxImageList1: TcxImageList;
@@ -30,6 +33,8 @@ type
     procedure DoInitialize; override;
 
   private
+    procedure DestroyForm(var message: TMessage); message WM_DESTROYFORM;
+
     procedure ClearRows(Sender: TObject);
     procedure BuildCategories(Sender: TObject);
 
@@ -62,6 +67,7 @@ uses
 procedure TViewMenu.FormCreate(Sender: TObject);
 begin
   inherited;
+  TM1FormsRegister.UpdateMainCaption(Self.Caption);
   NotificationService.Subscribe(ClearRows, TMenuViewlMsgs.ClearRows);
   NotificationService.Subscribe(BuildCategories, TMenuViewlMsgs.BuildCategories);
   NotificationService.Subscribe(BuildSignOutButton, TMenuViewlMsgs.BuildSignOutButton);
@@ -84,6 +90,13 @@ end;
 function TViewMenu.GetBaseController: IControllerBase;
 begin
   result := Controller as IControllerBase;
+end;
+
+
+
+procedure TViewMenu.DestroyForm(var message: TMessage);
+begin
+  Destroy;
 end;
 
 
@@ -179,13 +192,16 @@ end;
 procedure TViewMenu.cxVirtualVerticalGrid1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
   inherited;
-  if (Assigned(TcxVerticalGrid(Sender).FocusedRow)) and (TcxVerticalGrid(Sender).FocusedRow.ClassType = TcxCategoryRow) then
+  if (Button = mbLeft) then
   begin
+    if (Assigned(TcxVerticalGrid(Sender).FocusedRow)) and (TcxVerticalGrid(Sender).FocusedRow.ClassType = TcxCategoryRow) then
+    begin
 
-    SetRowsOnList(TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption, 'Mob' + TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption);
-    NewRows(TMenuModel(FModel).RowsList, TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption);
-    BuildBackButton(Self);
+      SetRowsOnList(TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption, 'Mob' + TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption);
+      NewRows(TMenuModel(FModel).RowsList, TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption);
+      BuildBackButton(Self);
 
+    end;
   end;
 end;
 
@@ -194,18 +210,20 @@ end;
 procedure TViewMenu.cxVirtualVerticalGrid2MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
   inherited;
-  if (Assigned(TcxVerticalGrid(Sender).FocusedRow)) and (TcxVerticalGrid(Sender).FocusedRow.ClassType = TcxCategoryRow) then
+  if (Button = mbLeft) then
   begin
-
-    if (TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Name = 'cxVoltar') then
-      NotificationService.SendMessage(FModel, TMenuViewlMsgs.FindCategories)
-
-    else if (TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Name = 'cxSignOut') then
+    if (Assigned(TcxVerticalGrid(Sender).FocusedRow)) and (TcxVerticalGrid(Sender).FocusedRow.ClassType = TcxCategoryRow) then
     begin
-      ViewFactory.InvokeShow(TM1Forms.Login);
-      Destroy;
-    end;
+      if (TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Name = 'cxVoltar') then
+        NotificationService.SendMessage(FModel, TMenuViewlMsgs.FindCategories)
 
+      else if (TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Name = 'cxSignOut') then
+      begin
+        ViewFactory.InvokeShow(TM1Forms.Login);
+        PostMessage(Self.Handle, WM_DESTROYFORM, 0, 0);
+      end;
+
+    end;
   end;
 end;
 

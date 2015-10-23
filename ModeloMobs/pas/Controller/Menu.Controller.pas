@@ -49,6 +49,12 @@ destructor TMenuController.Destroy;
 begin
   NotificationService.UnSubscribe(FindCategories);
 
+  TMenuModel(FModel).RowsList.Free;
+  TMenuModel(FModel).RowsList := nil;
+
+  TMenuModel(FModel).CategoryList.Free;
+  TMenuModel(FModel).CategoryList := nil;
+
   FModel.Free;
   inherited;
 end;

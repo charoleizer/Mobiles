@@ -20,18 +20,20 @@ object ViewMenu: TViewMenu
     Left = 0
     Top = 0
     Width = 214
-    Height = 233
+    Height = 249
     Align = alTop
     BevelOuter = bvNone
     Caption = 'Panel1'
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 0
     object cxVirtualVerticalGrid1: TcxVirtualVerticalGrid
       Left = 0
       Top = 0
       Width = 214
-      Height = 233
+      Height = 249
       BorderStyle = cxcbsNone
-      Align = alClient
+      Align = alTop
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = 15
@@ -43,18 +45,16 @@ object ViewMenu: TViewMenu
       Navigator.Buttons.CustomButtons = <>
       ParentFont = False
       TabOrder = 0
+      TabStop = False
       OnMouseUp = cxVirtualVerticalGrid1MouseUp
-      ExplicitLeft = -29
-      ExplicitTop = -137
-      ExplicitHeight = 201
       Version = 1
     end
   end
   object cxVirtualVerticalGrid2: TcxVirtualVerticalGrid
     Left = 0
-    Top = 233
+    Top = 249
     Width = 214
-    Height = 39
+    Height = 23
     BorderStyle = cxcbsNone
     Align = alBottom
     Font.Charset = DEFAULT_CHARSET
@@ -68,11 +68,8 @@ object ViewMenu: TViewMenu
     Navigator.Buttons.CustomButtons = <>
     ParentFont = False
     TabOrder = 1
+    TabStop = False
     OnMouseUp = cxVirtualVerticalGrid2MouseUp
-    ExplicitLeft = 2
-    ExplicitTop = 9
-    ExplicitWidth = 212
-    ExplicitHeight = 231
     Version = 1
   end
   object cxImageList1: TcxImageList

@@ -20,6 +20,7 @@ type
   private
     class function CreateForm(FormClass: TFormClass): TForm;
   public
+    class procedure UpdateMainCaption(ACaption: String);
     class procedure Execute;
   end;
 
@@ -63,11 +64,16 @@ end;
 
 class procedure TM1FormsRegister.Execute;
 begin
-
   ViewRegistry.OnCreateForm := CreateForm;
   ViewRegistry.Add(TM1Forms.Login, TViewLogin, TLoginController, False);
-  ViewRegistry.Add(TM1Forms.Menu, TViewMenu, TMenuController, False);
+  ViewRegistry.Add(TM1Forms.Menu, TViewMenu, TMenuController, False)
+end;
 
+
+
+class procedure TM1FormsRegister.UpdateMainCaption(ACaption: String);
+begin
+  MainForm.Caption := ACaption;
 end;
 
 initialization

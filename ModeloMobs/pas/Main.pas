@@ -11,7 +11,7 @@ type
     Panel1: TPanel;
     procedure FormShow(Sender: TObject);
   private
-    procedure ChangeMainCaption(Sender: TObject);
+
   end;
 
 var
@@ -24,13 +24,6 @@ uses
 
 {$R *.dfm}
 
-
-
-
-procedure TMainForm.ChangeMainCaption(Sender: TObject);
-begin
-  MainForm.Caption := 'Teste';
-end;
 
 
 

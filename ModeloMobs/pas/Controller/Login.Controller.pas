@@ -22,6 +22,7 @@ type
 implementation
 
 uses
+  Dialogs,
   System.SysUtils,
   M1.Exceptions,
   System.Rtti,
@@ -74,7 +75,11 @@ begin
 
   Result := oValidator.Make(FModel, True).Fails;
   if (Result) then
-    raise ExceptionValidationInfo.Create(oValidator.ErrorMessages.Text);
+  begin
+    MessageDlg(oValidator.ErrorMessages.Text, mtWarning, [mbOK], 0);
+    Result := False;
+    Exit;
+  end;
 
   { TODO -oVictor -cDesenvolver :
     A validação é feita em ordem aleatória. Dessa forma foi nessario aplicar o Make, sosinho para validar o Usuario.
@@ -89,7 +94,11 @@ begin
 
   Result := not(oValidator.Make(FModel, True).Fails);
   if not(Result) then
-    raise ExceptionValidationInfo.Create(oValidator.ErrorMessages.Text);
+  begin
+    MessageDlg(oValidator.ErrorMessages.Text, mtWarning, [mbOK], 0);
+    Result := False;
+    Exit;
+  end;
 
 end;
 

@@ -6,7 +6,11 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, editnum,
   FM.UI.BaseForm,
-  FM.Controller.Base;
+  FM.Controller.Base, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
+  Vcl.Menus, dxSkinsCore, dxSkinsDefaultPainters, cxButtons;
+
+const
+  WM_DESTROYFORM = WM_USER + 1;
 
 type
   // Classe base de formulario interno não vai funcionar
@@ -14,10 +18,13 @@ type
     Panel1: TPanel;
     EdtUserName: TEditText;
     EdtPassword: TEditText;
-    BtnOk: TButton;
-    BtnCancel: TButton;
+    BtnSignIn: TcxButton;
     procedure BtnCancelClick(Sender: TObject);
-    procedure BtnOkClick(Sender: TObject);
+    procedure BtnSignInClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+
+  private
+    procedure DestroyForm(var message: TMessage); message WM_DESTROYFORM;
 
   public
     function GetBaseController: IControllerBase;
@@ -43,7 +50,7 @@ uses
 
 
 
-procedure TViewLogin.BtnOkClick(Sender: TObject);
+procedure TViewLogin.BtnSignInClick(Sender: TObject);
 begin
   inherited;
 
@@ -55,9 +62,23 @@ begin
   if (GetBaseController.Validate) then
   begin
     ViewFactory.InvokeShow(TM1Forms.Menu);
-    Destroy;
+    PostMessage(self.Handle, WM_DESTROYFORM, 0, 0);
   end;
+end;
 
+
+
+procedure TViewLogin.DestroyForm(var message: TMessage);
+begin
+  Destroy;
+end;
+
+
+
+procedure TViewLogin.FormCreate(Sender: TObject);
+begin
+  inherited;
+  TM1FormsRegister.UpdateMainCaption(self.Caption);
 end;
 
 
