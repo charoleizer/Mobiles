@@ -10,7 +10,7 @@ uses
   Menu.ViewObject,
   FM.UI.BaseForm,
   FM.Controller.Base,
-  M1.Forms.Factory;
+  M1.Forms.Factory, Vcl.Buttons;
 
 const
   WM_DESTROYFORM = WM_USER + 1;
@@ -44,6 +44,8 @@ type
     procedure SetRowsOnList(ACategory, AProgramName: String);
     procedure NewRows(ARowsList: TRowsyList; ASelectedCategory: String);
 
+    function IsCategoryList(ACaption: String): Boolean;
+
   public
     function GetBaseController: IControllerBase;
 
@@ -56,7 +58,8 @@ implementation
 
 uses
   Menu.Model,
-  DDC.Notification.Service;
+  DDC.Notification.Service,
+  System.UITypes;
 
 {$R *.dfm}
 
@@ -94,6 +97,13 @@ end;
 
 
 
+function TViewMenu.IsCategoryList(ACaption: String): Boolean;
+begin
+  Result := not(Pos('Mob', ACaption) > 0);
+end;
+
+
+
 procedure TViewMenu.DestroyForm(var message: TMessage);
 begin
   Destroy;
@@ -113,11 +123,25 @@ begin
     if (MyRowList.Category = ASelectedCategory) then
     begin
       // Row
-      cxVirtualVerticalGrid1.Add(TcxEditorRow);
-      TcxEditorRow(cxVirtualVerticalGrid1.LastRow).Name := 'cxEditorRow' + MyRowList.ProgramName;
-      TcxEditorRow(cxVirtualVerticalGrid1.LastRow).Properties.ImageIndex := 0;
-      TcxEditorRow(cxVirtualVerticalGrid1.LastRow).Properties.EditPropertiesClass := TcxImageProperties;
-      TcxImageProperties(TcxEditorRow(cxVirtualVerticalGrid1.LastRow).Properties.EditProperties).Caption := MyRowList.ProgramName;
+      // cxVirtualVerticalGrid1.Add(TcxEditorRow);
+      // TcxEditorRow(cxVirtualVerticalGrid1.LastRow).Name := 'cxEditorRow' + MyRowList.ProgramName;
+      // TcxEditorRow(cxVirtualVerticalGrid1.LastRow).Properties.ImageIndex := 0;
+      // TcxEditorRow(cxVirtualVerticalGrid1.LastRow).Properties.EditPropertiesClass := TcxImageProperties;
+      // TcxImageProperties(TcxEditorRow(cxVirtualVerticalGrid1.LastRow).Properties.EditProperties).Caption := MyRowList.ProgramName;
+      // TcxEditorRow(cxVirtualVerticalGrid1.LastRow).Options.Focusing := false;
+
+      cxVirtualVerticalGrid1.Add(TcxCategoryRow);
+      TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Name := 'cxCategoryRow' + MyRowList.ProgramName;
+      TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Properties.Caption := MyRowList.ProgramName;
+      TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Properties.ImageIndex := 0;
+      TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.CanAutoHeight := false;
+      TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.CanMovedToCustomizationForm := false;
+      TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.CanResized := false;
+      TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.Moving := false;
+      TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.ShowExpandButton := false;
+      TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.ShowInCustomizationForm := false;
+      TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.TabStop := false;
+      TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.TabStop := False;
     end;
   end;
 
@@ -133,10 +157,10 @@ begin
   for i := 1 to 3 do
   begin
     TMenuModel(FModel).RowsList.Add(TRowsClass.Create);
+    // chumbado um random para gerar o nome do Mob, apenas para o protótipo
     TMenuModel(FModel).RowsList.Last.ProgramName := AProgramName + IntToStr(Random(10000));
     TMenuModel(FModel).RowsList.Last.Category    := ACategory;
   end;
-
 end;
 
 
@@ -148,7 +172,7 @@ begin
   TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Name := 'cxVoltar';
   TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Properties.Caption := 'Voltar';
   TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Properties.HeaderAlignmentHorz := taCenter;
-  TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Options.ShowExpandButton := False;
+  TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Options.ShowExpandButton := false;
 end;
 
 
@@ -159,13 +183,13 @@ begin
   cxVirtualVerticalGrid1.Add(TcxCategoryRow);
   TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Name := 'cxCategoryRow' + TMenuModel(FModel).MyRowByCategoryList.Category;
   TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Properties.Caption := TMenuModel(FModel).MyRowByCategoryList.Category;
-  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.CanAutoHeight := False;
-  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.CanMovedToCustomizationForm := False;
-  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.CanResized := False;
-  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.Moving := False;
-  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.ShowExpandButton := False;
-  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.ShowInCustomizationForm := False;
-  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.TabStop := False;
+  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.CanAutoHeight := false;
+  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.CanMovedToCustomizationForm := false;
+  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.CanResized := false;
+  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.Moving := false;
+  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.ShowExpandButton := false;
+  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.ShowInCustomizationForm := false;
+  TcxCategoryRow(cxVirtualVerticalGrid1.LastRow).Options.TabStop := false;
 end;
 
 
@@ -177,7 +201,7 @@ begin
   TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Name := 'cxSignOut';
   TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Properties.Caption := 'SignOut';
   TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Properties.HeaderAlignmentHorz := taCenter;
-  TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Options.ShowExpandButton := False;
+  TcxCategoryRow(cxVirtualVerticalGrid2.LastRow).Options.ShowExpandButton := false;
 end;
 
 
@@ -192,17 +216,30 @@ end;
 procedure TViewMenu.cxVirtualVerticalGrid1MouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
   inherited;
+
   if (Button = mbLeft) then
   begin
     if (Assigned(TcxVerticalGrid(Sender).FocusedRow)) and (TcxVerticalGrid(Sender).FocusedRow.ClassType = TcxCategoryRow) then
     begin
 
-      SetRowsOnList(TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption, 'Mob' + TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption);
-      NewRows(TMenuModel(FModel).RowsList, TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption);
-      BuildBackButton(Self);
+      if (IsCategoryList(TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption)) then
+      begin
+        // chumbado Mob com o caption, para teste do protótipo
+        SetRowsOnList(TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption, 'Mob');
+        NewRows(TMenuModel(FModel).RowsList, TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption);
+        BuildBackButton(Self);
+      end
+      else
+      begin
+        MessageDlg('Abrir ' + TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption, mtInformation, [mbOK], 0);
+        SetRowsOnList(TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption, 'Mob');
+        NewRows(TMenuModel(FModel).RowsList, TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Properties.Caption);
+        BuildBackButton(Self);
+      end;
 
     end;
   end;
+
 end;
 
 
@@ -212,6 +249,7 @@ begin
   inherited;
   if (Button = mbLeft) then
   begin
+
     if (Assigned(TcxVerticalGrid(Sender).FocusedRow)) and (TcxVerticalGrid(Sender).FocusedRow.ClassType = TcxCategoryRow) then
     begin
       if (TcxCategoryRow(TcxVerticalGrid(Sender).FocusedRow).Name = 'cxVoltar') then

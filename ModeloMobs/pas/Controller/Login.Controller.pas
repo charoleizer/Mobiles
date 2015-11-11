@@ -27,7 +27,8 @@ uses
   M1.Exceptions,
   System.Rtti,
   DDC.Validator,
-  DDC.Validator.Impl;
+  DDC.Validator.Impl,
+  System.UITypes;
 
 { TLoginController }
 
@@ -82,7 +83,7 @@ begin
   end;
 
   { TODO -oVictor -cDesenvolver :
-    A validação é feita em ordem aleatória. Dessa forma foi nessario aplicar o Make, sosinho para validar o Usuario.
+    A validação é feita em ordem aleatória. Dessa forma foi nessario aplicar o Make sosinho para validar o Usuario.
     Estudar uma forma melhor de se fazer essa validação. }
 
   oValidator.AddExtend(FModel.Password, 'Senha incorreta.',

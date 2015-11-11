@@ -4,21 +4,27 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, editnum,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
   FM.UI.BaseForm,
   FM.Controller.Base, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
   Vcl.Menus, dxSkinsCore, dxSkinsDefaultPainters, cxButtons;
 
 const
+  EM_SETCUEBANNER = $1501;
   WM_DESTROYFORM = WM_USER + 1;
 
 type
+  TEdit = class(Vcl.StdCtrls.TEdit)
+  protected
+    procedure DoSetTextHint(const Value: string); override;
+  end;
+
   // Classe base de formulario interno não vai funcionar
   TViewLogin = class(TBaseFormView)
     Panel1: TPanel;
-    EdtUserName: TEditText;
-    EdtPassword: TEditText;
     BtnSignIn: TcxButton;
+    EdtUserName: TEdit;
+    EdtPassword: TEdit;
     procedure BtnCancelClick(Sender: TObject);
     procedure BtnSignInClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -94,6 +100,15 @@ procedure TViewLogin.BtnCancelClick(Sender: TObject);
 begin
   inherited;
   close;
+end;
+
+{ TEdit }
+
+
+
+procedure TEdit.DoSetTextHint(const Value: string);
+begin
+  SendTextMessage(Handle, EM_SETCUEBANNER, WPARAM(1), Value);
 end;
 
 end.

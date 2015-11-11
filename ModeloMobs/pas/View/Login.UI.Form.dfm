@@ -18,36 +18,9 @@ inherited ViewLogin: TViewLogin
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    object EdtUserName: TEditText
-      Left = 34
-      Top = 72
-      Width = 145
-      Height = 21
-      CharCase = ecUpperCase
-      Enabled = True
-      TabOrder = 0
-      BtnConsult = False
-      BtnRegist = False
-      Caption = 'User Name:'
-      LabelPosition = lpAbove
-    end
-    object EdtPassword: TEditText
-      Left = 34
-      Top = 126
-      Width = 145
-      Height = 21
-      CharCase = ecUpperCase
-      Enabled = True
-      PasswordChar = '*'
-      TabOrder = 1
-      BtnConsult = False
-      BtnRegist = False
-      Caption = 'Password:'
-      LabelPosition = lpAbove
-    end
     object BtnSignIn: TcxButton
       Left = 34
-      Top = 184
+      Top = 176
       Width = 145
       Height = 25
       Caption = 'SignIn'
@@ -55,6 +28,23 @@ inherited ViewLogin: TViewLogin
       LookAndFeel.SkinName = 'UserSkin'
       TabOrder = 2
       OnClick = BtnSignInClick
+    end
+    object EdtUserName: TEdit
+      Left = 34
+      Top = 74
+      Width = 145
+      Height = 21
+      TabOrder = 0
+      TextHint = 'User Name'
+    end
+    object EdtPassword: TEdit
+      Left = 34
+      Top = 101
+      Width = 145
+      Height = 21
+      PasswordChar = '*'
+      TabOrder = 1
+      TextHint = 'Password'
     end
   end
 end
