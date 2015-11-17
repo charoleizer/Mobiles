@@ -91,8 +91,10 @@
         <DCC_DebugInformation>false</DCC_DebugInformation>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <DCC_UnitSearchPath>C:\Users\Victor\Documents\GitHub\tds\Framework\Controllers;C:\Users\Victor\Documents\GitHub\tds\Framework\Core;C:\Users\Victor\Documents\GitHub\tds\Framework\DAOs;C:\Users\Victor\Documents\GitHub\tds\Framework\Libs;C:\Users\Victor\Documents\GitHub\tds\Framework\Models;C:\Users\Victor\Documents\GitHub\tds\Framework\Views;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_MapFile>3</DCC_MapFile>
-        <DCC_Define>madExcept;LeakChecking;$(DCC_Define)</DCC_Define>
         <DCC_DebugInformation>true</DCC_DebugInformation>
         <DCC_LocalDebugSymbols>true</DCC_LocalDebugSymbols>
     </PropertyGroup>
@@ -103,28 +105,12 @@
         <DCCReference Include="..\pas\Main.pas">
             <Form>MainForm</Form>
         </DCCReference>
-        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Views\FM.UI.BaseForm.pas">
-            <Form>BaseFormView</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Views\FM.UI.FormularioInterno.pas">
-            <Form>FormFormularioInterno</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Models\FM.Model.Base.pas"/>
         <DCCReference Include="..\pas\Core\M1.Forms.Factory.pas"/>
-        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Views\FM.UI.View.Factory.pas"/>
-        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.Base.Impl.pas"/>
-        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.Base.pas"/>
         <DCCReference Include="..\pas\View\Login.UI.Form.pas">
             <Form>ViewLogin</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\pas\Controller\Login.Controller.pas"/>
-        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.Find.Impl.pas"/>
-        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.Find.pas"/>
-        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.FormularioInterno.Impl.pas"/>
-        <DCCReference Include="..\..\..\..\..\AppData\Local\GitHub\tds\tds\Framework\Controllers\FM.Controller.FormularioInterno.pas"/>
         <DCCReference Include="..\pas\Model\Login.Model.pas"/>
         <DCCReference Include="..\pas\Core\M1.ResourceStrings.pas"/>
         <DCCReference Include="..\pas\Core\M1.Exceptions.pas"/>
@@ -134,7 +120,9 @@
         </DCCReference>
         <DCCReference Include="..\pas\VO\Menu.ViewObject.pas"/>
         <DCCReference Include="..\pas\Controller\Menu.Controller.pas"/>
-        <DCCReference Include="..\pas\Model\Menu.Model.pas"/>
+        <DCCReference Include="..\pas\Model\Menu.Model.pas">
+            <Form>$R *.res</Form>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
